@@ -6,33 +6,32 @@ export const minhaListaData = {
     "SERIES": [
       "Connect",
       "Behind your touch",
-      "jujutso kaisen",
       "o Domo",
       "Gokusen",
       "M8 - quando a morte socorre a vida",
       "one piece",
       "extraordinaria",
       "miracle works",
-      "grand blue",
       "mask girl",
       "a lição",
-      "overdrive",
       "garota de fora"
     ],
     "FILMES": [
-      "O Despertar das tartarugas ninjas",
-      "Ashita sekai ga owaru toshitemo",
-      "Aladin",
-      "suzume no tojimari",
+      "overdrive",
       "jobs",
-      "Nier: Automata Ver1.1a",
       "a boy who returned",
       "poder sem limites",
       "projeto almanaque",
       "Parallel",
       "cidade das sombras",
+    ],
+    "ANIMES":[
+      "jujutso kaisen",
       "tenki no ko",
-      "mega tubarão"
+      "Ashita sekai ga owaru toshitemo",
+      "Nier: Automata Ver1.1a",
+      "grand blue",
+      "suzume no tojimari",
     ]
   }
   
