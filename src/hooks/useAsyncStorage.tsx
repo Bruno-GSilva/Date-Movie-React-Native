@@ -1,15 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface setLocalProps {
   value: string;
-  key: string;
 }
 
-export const useAsyncStorage = () => {
+export const useAsyncStorage = (key:string) => {
   const [storageData, setStorageData] = useState<string>("");
 
-  const setLocal = async ({ key, value }: setLocalProps) => {
+  const setLocal = async ({ value }: setLocalProps) => {
     try {
       await AsyncStorage.setItem(key, value);
       console.log("valor adicionado", value);
@@ -18,7 +17,8 @@ export const useAsyncStorage = () => {
     }
   };
 
-  const readLocal = async (key: string) => {
+  
+  const readLocal = async () => {
     try {
       const value = await AsyncStorage.getItem(key);
       if (value !== null) {
@@ -29,6 +29,10 @@ export const useAsyncStorage = () => {
       console.error("error ao ler", e);
     }
   };
+  
+  useEffect(()=>{
+    readLocal()
+  },[])
 
   return { setLocal, readLocal, storageData };
 };

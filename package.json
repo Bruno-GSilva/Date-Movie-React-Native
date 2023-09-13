@@ -12,7 +12,7 @@
     "@expo-google-fonts/alex-brush": "^0.2.3",
     "@expo/vector-icons": "^13.0.0",
     "@react-native-async-storage/async-storage": "1.18.2",
-    "@react-native-community/datetimepicker": "^7.5.0",
+    "@react-native-community/datetimepicker": "7.2.0",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/stack": "^6.3.17",
     "@supabase/supabase-js": "^2.33.2",

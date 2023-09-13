@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
-import { LinearGradient } from "expo-linear-gradient";
+
+import { View, Image, Pressable } from "react-native";
+
 import { RouteProp, useRoute } from "@react-navigation/native";
 import Reanimated, {
   BounceInLeft,
   BounceInRight,
   SlideInDown,
 } from "react-native-reanimated";
-import { View, Image, Pressable } from "react-native";
+
+import { LinearGradient } from "expo-linear-gradient";
+
 import { useFecth } from "../hooks/useFecth";
 import { useList } from "../hooks/useList";
 import { dataProps } from "../utils/types/interfaceData";
@@ -102,7 +106,7 @@ export default function MovieScreen() {
           />
         )}
         <Image source={require("../utils/constants/images/Iphone.png")} />
-        <Pressable className="absolute" onPress={randomButton}>
+        <Pressable className="absolute active:scale-110" onPress={randomButton}>
           <Image source={require("../utils/constants/images/random.png")} />
         </Pressable>
       </Reanimated.View>
