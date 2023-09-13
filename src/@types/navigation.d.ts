@@ -5,6 +5,7 @@ export declare global {
             movie:{
                 category:"series" | "filmes" | "animes",
             };
+            list:undefined;
         }
     }
 }

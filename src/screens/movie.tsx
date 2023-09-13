@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import Reanimated, {
@@ -7,19 +7,24 @@ import Reanimated, {
   SlideInDown,
 } from "react-native-reanimated";
 import { View, Image, Pressable } from "react-native";
-import { filmesType } from "../utils/types/interface";
-import { minhaListaData } from "../utils/constants/lista/lista";
 import { useFecth } from "../hooks/useFecth";
-import { CreatedModal } from "../components/createdModal";
+import { useList } from "../hooks/useList";
+import { dataProps } from "../utils/types/interfaceData";
+import { filmesType } from "../utils/types/interface";
 
 interface RoutesParam {
   category: string;
 }
 export default function MovieScreen() {
   const { params } = useRoute<RouteProp<Record<string, RoutesParam>>>();
-
-  const [winMovie, setWinMovie] = useState<string>("");
   const { dataMovie, fecthFilmes } = useFecth();
+  const { dataList } = useList();
+
+  const [series, setSeries] = useState<dataProps[]>([]);
+  const [filmes, setFilmes] = useState<dataProps[]>([]);
+  const [animes, setAnimes] = useState<dataProps[]>([]);
+
+  const [winMovie, setWinMovie] = useState<dataProps>();
 
   const escolherAleatoriamente = ({ minhaLista }: filmesType) => {
     if (minhaLista.length === 0) {
@@ -34,14 +39,37 @@ export default function MovieScreen() {
     const elementoAleatorio = escolherAleatoriamente({
       minhaLista:
         params.category === "series"
-          ? minhaListaData.SERIES
+          ? series
           : params.category === "filmes"
-          ? minhaListaData.FILMES
-          : minhaListaData.ANIMES,
+          ? filmes
+          : animes,
     });
+    console.log(elementoAleatorio)
     setWinMovie(elementoAleatorio!);
     fecthFilmes(elementoAleatorio!);
   };
+
+  useEffect(() => {
+    let SERIES = dataList.filter((list) => {
+      return list.category === "Series";
+    });
+    let ANIMES = dataList.filter((list) => {
+      return list.category === "Animes";
+    });
+    let FILMES = dataList.filter((list) => {
+      return list.category === "Filmes";
+    });
+
+    if (SERIES != undefined) {
+      setSeries(SERIES);
+    }
+    if (FILMES != undefined) {
+      setFilmes(FILMES);
+    }
+    if (ANIMES != undefined) {
+      setAnimes(ANIMES);
+    }
+  }, [dataList]);
 
   return (
     <View className="w-full h-screen justify-start items-center">
@@ -74,16 +102,16 @@ export default function MovieScreen() {
           />
         )}
         <Image source={require("../utils/constants/images/Iphone.png")} />
-        <Pressable onPress={randomButton} className="absolute">
+        <Pressable className="absolute" onPress={randomButton}>
           <Image source={require("../utils/constants/images/random.png")} />
         </Pressable>
       </Reanimated.View>
 
       <Reanimated.Text
         entering={BounceInRight}
-        className={`text-black text-[64px] font-['alex-brush']`}
+        className={`text-black text-4xl mt-10 font-['alex-brush']`}
         numberOfLines={1}>
-        {winMovie}
+        {winMovie?.name}
       </Reanimated.Text>
     </View>
   );

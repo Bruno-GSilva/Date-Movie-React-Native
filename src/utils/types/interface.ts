@@ -1,3 +1,5 @@
+import { dataProps } from "./interfaceData";
+
 export type MovieDataApi = {
   page: number;
   results: MoviesData[];
@@ -6,7 +8,7 @@ export type MovieDataApi = {
 };
 
 export interface filmesType{
-    minhaLista: string[]
+    minhaLista: dataProps[]
 }
 
 export interface MoviesData extends MovieDataApi {
