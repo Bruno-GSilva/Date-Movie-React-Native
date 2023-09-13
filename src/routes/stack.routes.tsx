@@ -1,4 +1,5 @@
-import { createStackNavigator } from "@react-navigation/stack";
+import 'react-native-gesture-handler'
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // screens
 import HomeScreen from "../screens/home";
@@ -6,20 +7,30 @@ import MovieScreen from "../screens/movie";
 import ListScreen from "../screens/list";
 import { DropdownProvider } from "../contexts/Dropdown";
 import { ListProvider } from "../contexts/listContext";
+import SplashScreen from "../screens/splash";
 
 export default function NavigationStack() {
-  const { Group, Navigator, Screen } = createStackNavigator();
+  const { Group, Navigator, Screen } = createNativeStackNavigator();
 
   return (
     <DropdownProvider>
       <ListProvider>
-        <Navigator initialRouteName="home">
+        <Navigator initialRouteName="splash">
           <Group
             screenOptions={{
               headerShown: false,
+              animation:"slide_from_right"
             }}
           >
-            <Screen name="home" component={HomeScreen} />
+            <Screen
+              name="home"
+              component={HomeScreen}
+              options={{ animation: "simple_push" }}
+            />
+              <Screen
+                name="splash"
+                component={SplashScreen}
+              />
             <Screen
               name="movie"
               component={MovieScreen}

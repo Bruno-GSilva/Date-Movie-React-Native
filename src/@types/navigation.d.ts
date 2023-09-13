@@ -6,6 +6,7 @@ export declare global {
                 category:"series" | "filmes" | "animes",
             };
             list:undefined;
+            splash:undefined;
         }
     }
 }
