@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { supabase } from "../lib/supabase";
 import { createdData, dataProps } from "../utils/types/interfaceData";
+import { ListContext } from "../contexts/listContext";
 
 export const useList = () => {
-  const [dataList, setDataList] = useState<dataProps[]>([]);
+  const { dataList, setDataList } = useContext(ListContext)
 
   useEffect(() => {
     const getData = async () => {
@@ -22,7 +23,7 @@ export const useList = () => {
       }
     };
     getData();
-  }, [setDataList]);
+  }, []);
 
   const createdData = async ({
     category: selectItem,
@@ -47,16 +48,17 @@ export const useList = () => {
 
   const deleteData = async (movie_id: number) => {
     try {
-      const { error, data } = await supabase
+      const { error } = await supabase
         .from("date_movies")
         .delete()
         .eq("id", movie_id);
-      console.log("error ao deletar", error);
 
-      if (data != null) {
-        setDataList((prev) => [...prev, ...data]);
-      }else{
-        console.log("ta retornando nulo")
+      if (!error) {
+        let updateList = dataList.filter((list) => list.id != movie_id);
+        setDataList(updateList);
+        alert("Deletado");
+      } else {
+        console.log("ta retornando nulo");
       }
     } catch (error) {
       console.error(error);

@@ -7,15 +7,21 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Button } from "../components/UI/button";
 import { TextInput } from "react-native-gesture-handler";
 import { useList } from "../hooks/useList";
+import { useMessage } from "../components/message";
 
 export default function ListScreen() {
   const [text, setText] = useState<string>("");
   const { selectItem } = useContext(DropdownContext);
+  const { schedulePushNotification } = useMessage();
   const { createdData, dataList } = useList();
 
   const saveItem = () => {
     if (selectItem) {
       createdData({ category: selectItem, name: text });
+      schedulePushNotification({
+        body: `item da categoria: ${selectItem}, ${text}`,
+        title: `um novo item foi criado!`,
+      });
     } else {
       alert("selecione uma categoria");
     }

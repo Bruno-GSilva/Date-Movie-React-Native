@@ -48,7 +48,6 @@ export default function MovieScreen() {
           ? filmes
           : animes,
     });
-    console.log(elementoAleatorio)
     setWinMovie(elementoAleatorio!);
     fecthFilmes(elementoAleatorio!);
   };

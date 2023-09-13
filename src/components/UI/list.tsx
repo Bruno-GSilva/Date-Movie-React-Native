@@ -14,8 +14,8 @@ export const MyList = ({ name, id }: listProps) => {
     <>
       <Animated.View entering={SlideInUp.delay(300)} className="w-full h-auto flex-row items-center justify-between px-4 py-2 border-b-2 border-black">
         <Text
-          className={`text-black text-4xl font-['alex-brush']`}
-          numberOfLines={2}>
+          className={`w-2/3 text-black text-4xl font-['alex-brush']`}
+          numberOfLines={1}>
           {name}
         </Text>
         <IconDrawer

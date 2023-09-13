@@ -19,25 +19,25 @@ import { useAsyncStorage } from "../hooks/useAsyncStorage";
 export default function HomeScreen() {
   const { navigate } = useNavigation();
 
-  const [image, setImage] = useState<string>('')
+  const [image, setImage] = useState<string>("");
   const [status, requestPermission] = ImagePicker.useCameraPermissions();
   const { setLocal, readLocal, storageData } = useAsyncStorage("image_url");
 
   useEffect(() => {
     readLocal();
   }, [image]);
-  
+
   const pickImage = async () => {
-    requestPermission()
-    let {assets, canceled} = await ImagePicker.launchImageLibraryAsync({
+    requestPermission();
+    let { assets, canceled } = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [9, 16],
       quality: 1,
     });
-    
+
     if (!canceled) {
-      setImage(assets![0].uri)
+      setImage(assets![0].uri);
       setLocal({ value: assets![0].uri });
     }
   };
@@ -47,7 +47,7 @@ export default function HomeScreen() {
       <StatusBar hidden />
       {storageData && (
         <ImageBackground
-          source={{ uri: storageData? storageData : image }}
+          source={{ uri: storageData ? storageData : image }}
           className="absolute -z-10 w-screen h-screen object-contain"
           blurRadius={0}
         />
@@ -58,7 +58,8 @@ export default function HomeScreen() {
       />
       <View className="absolute w-screen h-screen bg-gradient-to-r to-red-500 from-slate-950" />
       <Text
-        className={`absolute top-0 mt-14 text-black text-[64px] font-['alex-brush'] mb-2`}>
+        className={`absolute top-0 mt-14 text-black text-[64px] font-['alex-brush'] mb-2`}
+      >
         Date Movie
       </Text>
       <View className="gap-10">
