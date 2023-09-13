@@ -1,6 +1,6 @@
 {
-  "name": "aleatorizador",
-  "version": "1.0.0",
+  "name": "date_movie",
+  "version": "1.5.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
