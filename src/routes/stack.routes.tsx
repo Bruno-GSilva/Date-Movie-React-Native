@@ -1,13 +1,14 @@
 import 'react-native-gesture-handler'
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import { DropdownProvider } from "../contexts/Dropdown";
+import { ListProvider } from "../contexts/listContext";
+
 // screens
+import SplashScreen from "../screens/splash";
 import HomeScreen from "../screens/home";
 import MovieScreen from "../screens/movie";
 import ListScreen from "../screens/list";
-import { DropdownProvider } from "../contexts/Dropdown";
-import { ListProvider } from "../contexts/listContext";
-import SplashScreen from "../screens/splash";
 
 export default function NavigationStack() {
   const { Group, Navigator, Screen } = createNativeStackNavigator();

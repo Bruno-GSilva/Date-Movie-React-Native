@@ -6,11 +6,19 @@ import { dataProps } from "../utils/types/interfaceData";
 export const useFecth = () => {
   const [dataMovie, setData] = useState<MoviesData[]>([]);
 
-  const fecthFilmes = async (query: dataProps) => {
-    const url = `https://api.themoviedb.org/3/search/movie?query=${query.name}&api_key=74e7143baeb0d85b8d30aa4cf82a390c`;
+  const fecthFilmes = async (search: dataProps) => {
+    const url = `https://api.themoviedb.org/3/discover/tv`;
 
     try {
-      const response = await axios.get<MovieDataApi>(url);
+      const response = await axios.get<MovieDataApi>(url, {
+        params: {
+          api_key:'74e7143baeb0d85b8d30aa4cf82a390c',
+          query: search.name,
+          include_adult: false,
+          language: "en-US",
+          page: 1,
+        },
+      });
       const { results } = response.data;
       setData(results);
     } catch (error) {
@@ -18,5 +26,5 @@ export const useFecth = () => {
     }
   };
 
-  return {dataMovie, fecthFilmes}
+  return { dataMovie, fecthFilmes };
 };

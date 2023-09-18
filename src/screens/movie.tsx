@@ -24,6 +24,8 @@ export default function MovieScreen() {
   const { dataMovie, fecthFilmes } = useFecth();
   const { dataList } = useList();
 
+  console.log(dataMovie)
+
   const [series, setSeries] = useState<dataProps[]>([]);
   const [filmes, setFilmes] = useState<dataProps[]>([]);
   const [animes, setAnimes] = useState<dataProps[]>([]);
@@ -92,7 +94,7 @@ export default function MovieScreen() {
         {dataMovie.length != 0 ? (
           <Image
             source={{
-              uri: `https://image.tmdb.org/t/p/original${dataMovie[0].poster_path}`,
+              uri: `https://image.tmdb.org/t/p/original${dataMovie[0].backdrop_path}`,
             }}
             className="absolute w-full h-full opacity-60"
           />
