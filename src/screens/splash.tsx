@@ -6,6 +6,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export default function SplashScreen() {
   const { navigate } = useNavigation();
+
+
   return (
     <View className='flex-1 justify-center items-center'>
       <LinearGradient

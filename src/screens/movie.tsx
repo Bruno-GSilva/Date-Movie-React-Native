@@ -21,10 +21,8 @@ interface RoutesParam {
 }
 export default function MovieScreen() {
   const { params } = useRoute<RouteProp<Record<string, RoutesParam>>>();
-  const { dataMovie, fecthFilmes } = useFecth();
+  const { fecthFilmes, dataMovie } = useFecth();
   const { dataList } = useList();
-
-  console.log(dataMovie)
 
   const [series, setSeries] = useState<dataProps[]>([]);
   const [filmes, setFilmes] = useState<dataProps[]>([]);
@@ -33,10 +31,6 @@ export default function MovieScreen() {
   const [winMovie, setWinMovie] = useState<dataProps>();
 
   const escolherAleatoriamente = ({ minhaLista }: filmesType) => {
-    if (minhaLista.length === 0) {
-      return undefined;
-    }
-
     const indiceAleatorio = Math.floor(Math.random() * minhaLista.length);
     return minhaLista[indiceAleatorio];
   };
@@ -92,18 +86,14 @@ export default function MovieScreen() {
         entering={SlideInDown}
         className="bg-white border-2 border-white w-64 h-[500px] justify-center items-center">
         {dataMovie.length != 0 ? (
-          <Image
-            source={{
-              uri: `https://image.tmdb.org/t/p/original${dataMovie[0].backdrop_path}`,
-            }}
+          <Image source={{uri: `https://image.tmdb.org/t/p/original${dataMovie[0].backdrop_path}`}}
             className="absolute w-full h-full opacity-60"
+            resizeMode="cover"
           />
         ) : (
           <Image
-            source={{
-              uri: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQti8GUkoJZuv__gJaWv3cQTXRd-YiwhZXzqg&usqp=CAU`,
-            }}
-            className="absolute bottom-0 w-48 h-48 object-cover opacity-60"
+            source={require(`../utils/constants/images/error-image.jpg`)}
+            className="absolute w-full h-full bottom-0 object-cover opacity-60"
           />
         )}
         <Image source={require("../utils/constants/images/Iphone.png")} />
