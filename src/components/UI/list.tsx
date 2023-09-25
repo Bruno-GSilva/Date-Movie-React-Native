@@ -1,7 +1,6 @@
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 import { IconDrawer } from "./icon";
 import { useList } from "../../hooks/useList";
-import Animated, { SlideInUp } from "react-native-reanimated";
 
 interface listProps {
   id: number;
@@ -12,10 +11,11 @@ export const MyList = ({ name, id }: listProps) => {
   const { deleteData } = useList();
   return (
     <>
-      <Animated.View entering={SlideInUp.delay(300)} className="w-full h-auto flex-row items-center justify-between px-4 py-2 border-b-2 border-black">
+      <View className="w-full h-auto flex-row items-center justify-between px-4 py-2 border-b-2 border-black">
         <Text
           className={`w-2/3 text-black text-4xl font-['alex-brush']`}
-          numberOfLines={1}>
+          numberOfLines={1}
+        >
           {name}
         </Text>
         <IconDrawer
@@ -25,7 +25,7 @@ export const MyList = ({ name, id }: listProps) => {
           colorButton="bg-[#FF405C]"
           onPress={() => deleteData(id)}
         />
-      </Animated.View>
+      </View>
     </>
   );
 };
