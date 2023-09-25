@@ -1,6 +1,5 @@
 import * as React from "react";
 import { View, Pressable } from "react-native";
-import Animated, { SlideInDown } from "react-native-reanimated";
 import { CreatedModalProps } from "../utils/types/interfaceCreatedModal";
 import { IconDrawer } from "./UI/icon";
 
@@ -20,51 +19,27 @@ export const CreatedModal = (props: CreatedModalProps) => {
             onPress={() => setModalEvents(false)}
           >
             <View className="z-40 absolute bottom-0 right-0 mx-5 my-24">
-              {props.firstIconName &&
-                (Animated ? (
-                  <Animated.View entering={SlideInDown.delay(350)}>
-                    <IconDrawer
-                      colorIcon={props.colorIcon}
-                      nameIcon={props.firstIconName}
-                      sizeIcon={props.sizeIcon}
-                      label={props.labelIconFirst}
-                      colorButton={props.color ? props.color : "bg-black"}
-                      onPress={props.firstAction}
-                    />
-                  </Animated.View>
-                ) : (
-                  <IconDrawer
-                    colorIcon={props.colorIcon}
-                    nameIcon={props.firstIconName}
-                    sizeIcon={props.sizeIcon}
-                    label={props.labelIconFirst}
-                    colorButton={props.color ? props.color : "bg-black"}
-                    onPress={props.firstAction}
-                  />
-                ))}
+              {props.firstIconName && (
+                <IconDrawer
+                  colorIcon={props.colorIcon}
+                  nameIcon={props.firstIconName}
+                  sizeIcon={props.sizeIcon}
+                  label={props.labelIconFirst}
+                  colorButton={props.color ? props.color : "bg-black"}
+                  onPress={props.firstAction}
+                />
+              )}
 
-              {props.secondIconName &&
-                (Animated ? (
-                  <Animated.View entering={SlideInDown.delay(150)}>
-                    <IconDrawer
-                      colorIcon={props.colorIcon}
-                      nameIcon={props.secondIconName}
-                      sizeIcon={props.sizeIcon}
-                      label={props.labelIconSecond}
-                      colorButton={props.color ? props.color : "bg-black"}
-                      onPress={props.secondAction}
-                    />
-                  </Animated.View>
-                ) : (
-                  <IconDrawer
-                    colorIcon={props.colorIcon}
-                    nameIcon={props.secondIconName}
-                    sizeIcon={props.sizeIcon}
-                    label={props.labelIconSecond}
-                    colorButton={props.color ? props.color : "bg-black"}
-                    onPress={props.secondAction}
-                  />
-                ))}
+              {props.secondIconName && (
+                <IconDrawer
+                  colorIcon={props.colorIcon}
+                  nameIcon={props.secondIconName}
+                  sizeIcon={props.sizeIcon}
+                  label={props.labelIconSecond}
+                  colorButton={props.color ? props.color : "bg-black"}
+                  onPress={props.secondAction}
+                />
+              )}
             </View>
           </Pressable>
         )}

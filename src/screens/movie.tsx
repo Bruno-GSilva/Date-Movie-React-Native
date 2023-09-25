@@ -1,13 +1,8 @@
 import { useState, useEffect } from "react";
 
-import { View, Image, Pressable } from "react-native";
+import { View, Image, Pressable, Text } from "react-native";
 
 import { RouteProp, useRoute } from "@react-navigation/native";
-import Reanimated, {
-  BounceInLeft,
-  BounceInRight,
-  SlideInDown,
-} from "react-native-reanimated";
 
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -76,17 +71,16 @@ export default function MovieScreen() {
         colors={["#ffffff", "#FF405C"]}
         className="absolute w-screen h-screen"
       />
-      <Reanimated.Text
-        entering={BounceInLeft}
-        className={`text-black text-[64px] font-['alex-brush']`}>
+      <Text className={`text-black text-[64px] font-['alex-brush']`}>
         {params.category}
-      </Reanimated.Text>
+      </Text>
 
-      <Reanimated.View
-        entering={SlideInDown}
-        className="bg-white border-2 border-white w-64 h-[500px] justify-center items-center">
+      <View className="bg-white border-2 border-white w-64 h-[500px] justify-center items-center">
         {dataMovie.length != 0 ? (
-          <Image source={{uri: `https://image.tmdb.org/t/p/original${dataMovie[0].backdrop_path}`}}
+          <Image
+            source={{
+              uri: `https://image.tmdb.org/t/p/original${dataMovie[0].backdrop_path}`,
+            }}
             className="absolute w-full h-full opacity-60"
             resizeMode="cover"
           />
@@ -100,14 +94,14 @@ export default function MovieScreen() {
         <Pressable className="absolute active:scale-110" onPress={randomButton}>
           <Image source={require("../utils/constants/images/random.png")} />
         </Pressable>
-      </Reanimated.View>
+      </View>
 
-      <Reanimated.Text
-        entering={BounceInRight}
+      <Text
         className={`text-black text-4xl mt-10 font-['alex-brush']`}
-        numberOfLines={1}>
+        numberOfLines={1}
+      >
         {winMovie?.name}
-      </Reanimated.Text>
+      </Text>
     </View>
   );
 }

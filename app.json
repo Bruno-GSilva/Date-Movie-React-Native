@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -22,9 +20,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": [
-        "android.permission.RECORD_AUDIO"
-      ],
+      "permissions": ["android.permission.RECORD_AUDIO"],
       "package": "com.appsgomes.dateMovie"
     },
     "web": {
@@ -37,17 +33,11 @@
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
       ],
-      [
-        "expo-notifications",
-        {
-          "icon": "./local/assets/notification-icon.png",
-          "color": "#ffffff"
-        }
-      ]
+      ["expo-notifications"]
     ],
     "extra": {
       "eas": {
-        "projectId": "4813f074-4680-4b59-a28e-b41cd95e84e3"
+        "projectId": "627cf6f4-83e1-4c73-8cf5-97d9ed7fc517"
       }
     }
   }
